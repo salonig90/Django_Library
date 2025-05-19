@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After sign in </title>
+    <style media="screen">
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 24px;
+            line-height: 1.33;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+        }
+
+        .jumbotron {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        .jumbotron h1 {
+            text-align: center;
+        }
+        body{
+            background-color: rgb(127, 202, 255);
+        }
+        button{
+            float: right;
+        }
+    </style>
+    
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <button><a href="{% url 'logout_view' %}">logout</a></button>
+    <center>
+        <h3 style=" margin-bottom: 0px;" class='alert alert-success'>You are warmly welcomed to the Online Library
+            Management System!</h3>
+    </center>
+    <div class="jumbotron" style=" margin-bottom: 0px;">
+        <h1 class="display-4">Hello {{user.first_name}} !</h1>
+        <center><p class="lead">As an administrator, you are authorized to add books to the library, review the collection of
+            available books, allocate books to students, monitor the list of books issued to students, and access
+            numerous other features.
+        </p></center>
+        <hr class="my-4">
+        <center><p><strong>Options Accessible to You</strong></p></center>
+        <div class="options" style="text-align:center">
+            <a href="{% url 'create_book' %}" class="btn btn-primary btn-lg active" role="button"
+                aria-pressed="true">Add Book To Library</a><br><br>
+            <a href="{% url 'all_books' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">View
+                Available Book</a><br><br>
+        </div>
+
+    </div>
+    {% endif %}
+</body>
+
+</html>
